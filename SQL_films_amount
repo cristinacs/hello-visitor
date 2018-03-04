@@ -1,0 +1,9 @@
+--In this example we will be resuming the amount of money earned by each film ordered by descendant amount.
+--We will be using the example in PostreSQL Data Base.
+
+select fi.title, sum(pay.amount) from film fi
+  join inventory inv on fi.film_id = inv.film_id
+  join rental ren on inv.inventory_id = ren.inventory_id
+  join payment pay on ren.rental_id = pay.rental_id
+  group by fi.film_id
+  order by sum(pay.amount) desc;
