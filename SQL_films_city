@@ -1,0 +1,9 @@
+--In this SQL query in the PostgreSQL Data Base, we will be informing by the amount of money earned per city
+--ordered by country and city.
+select co.country, ci.city, sum(pa.amount) from payment pa
+  join customer cust on pa.customer_id = cust.customer_id
+  join address ad on cust.address_id = ad.address_id
+  join city ci on ad.city_id = ci.city_id
+  join country co on ci.country_id = co.country_id
+  group by ci.city_id, co.country_id
+  order by co.country, ci.city;
