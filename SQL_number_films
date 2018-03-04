@@ -1,0 +1,5 @@
+--In this SQL query we will be counting the number of films by category and release year, in the example in PostreSQL Data Base.
+select count(*), f.release_year, cate."name" from film f
+  join film_category c on f.film_id = c.film_id
+  join category cate on c.category_id = cate.category_id
+  group by f.release_year, c.category_id, cate."name";
